@@ -44,7 +44,7 @@ class Custom_list:
         index = 0
         print("[", end = " ")
         for item in self.Array:
-            if index != self.Pointer :
+            if index != self.Pointer - 1 :
                 print(item, end = " , ")
             else:
                 print(item, end = " ")
