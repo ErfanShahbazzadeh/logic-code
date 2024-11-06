@@ -39,9 +39,19 @@ class Custom_list:
         self.Array[self.Pointer] = 0 # Clear the last index for cleaner array
     
     def Display(self):
-        for x in range(self.Pointer):  
-            print(self.Array[x]) #Print out the array
+        #for x in range(self.Pointer):  
+        #    print(self.Array[x]) #Print out the array
+        index = 0
+        print("[", end = " ")
+        for item in self.Array:
+            if index != self.Pointer :
+                print(item, end = " , ")
+            else:
+                print(item, end = " ")
+            index += 1
+        print("]")
 
+        
     def Append(self,value):
         if self.Pointer >= self.size:  # Check if we need to resize the array  
             self.resize()
