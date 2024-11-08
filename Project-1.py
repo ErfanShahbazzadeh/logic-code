@@ -18,18 +18,36 @@ class Custom_list:
         self.Pointer += 1 # Increase the pointer
 
     def Delete_By_Value(self, value):
-        Bool = 0
-        for x in range(self.Pointer):  
-            if self.Array[x] == value:  
-                for j in range(x, self.Pointer - 1):  
-                    self.Array[j] = self.Array[j + 1]  # Shift elements to the left  
-                self.Pointer -= 1  # Decrease pointer  
-                # Clear the last element for cleanliness  
-                self.Array[self.Pointer] = 0  
-                Bool = 1   
-        return Bool   
+        Temp_Array = [0]*self.Pointer
+        original_pointer = self.Pointer  # Track the original number of elements  
+        for i in range(self.Pointer):
+            Temp_Array[i] = self.Array[i]
+        # Loop through to delete all instances of the specified value  
+        for i in range(self.Pointer):  
+            if self.Array[i] == value:  
+                self.Pointer -= 1  # Decrease pointer as an element is deleted  
+            else:  
+                # Move the non-matching element to the front  
+                self.Array[i - (original_pointer - self.Pointer)] = self.Array[i]  
+        
+        # Clear the remaining elements  
+        for i in range(self.Pointer, original_pointer):  
+            self.Array[i] = 0  # Optionally set to 0 for cleanliness  
+        
+        #b = 0
+        #for i in range(self.Pointer):
+        #    if Temp_Array[i] != 0:
+        #        self.Array[b] = Temp_Array[i]
+        #        b += 1 
+
+
+        if original_pointer - self.Pointer == 0:  
+            print("Value not found.")  
+        else:  
+            print(f"Deleted all occurrences of value: {value}")
 
     def Delete_By_Index(self, input):
+        
         if input <0 or input > self.Pointer: # Check if the input is a valid index
             print("Index out of range")
             return
@@ -37,23 +55,20 @@ class Custom_list:
             self.Array[i] = self.Array[i + 1] # Shift elements to the left 
         self.Pointer -= 1 # Decrease pointer
         self.Array[self.Pointer] = 0 # Clear the last index for cleaner array
+        counter = 0 
+        for item in self.Array:
+            if item != 0:
+                print(item)
+                self.Array[counter] = item
+                counter += 1
     
     def Display(self):
         #for x in range(self.Pointer):  
         #    print(self.Array[x]) #Print out the array
-        index = 0
-        print("[", end = " ")
-        for item in self.Array:
-            if index != self.Pointer - 1 :
-                print(item, end = " , ")
-            else:
-                print(item, end = " ")
-            index += 1
-        print("]")
-
-        
+        print(self.Array)
+  
     def Append(self,value):
-        if self.Pointer >= self.size:  # Check if we need to resize the array  
+        if self.Pointer >= self.size:  # Check if we need to resize the array
             self.resize()
         self.Array[self.Pointer] = value #Append the value to the end of the array
         self.Pointer += 1 #Expand the size of the array
@@ -68,19 +83,23 @@ class Custom_list:
         for i in range(self.Pointer):
             self.Array[i] = Reversed_Array[i] # Append the new array
                           
-    def Search_By_Value(value):
+    def Search_By_Value(self, value):
         Index_Array = [0]* self.Pointer # Create a new array
         i = 0
+        Bool = 0
         for index in range(self.Pointer): # Search thoroug the Array
             if self.Array[index] == value:
                 Index_Array[i] = index
                 i += 1
+                Bool = 1
+        if Bool == 1:
             return Index_Array
-        print("There is no such value")
-        return None # Return none if it doesn't exist
+        else:
+            print("There is no such value")
+            return None # Return none if it doesn't exist
 
     def resize(self):  
-        new_size = self.size * 2 + 1 if self.size > 0 else 1  # Ensure at least size of 1  
+        new_size = self.size * 1 + 1 if self.size > 0 else 1  # Ensure at least size of 1  
         new_array = [0] * new_size  # Create a new array with more size  
         for i in range(self.Pointer):  
             new_array[i] = self.Array[i]  # Copy old elements to new array  
