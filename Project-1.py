@@ -18,10 +18,12 @@ class Custom_list:
         self.Pointer += 1 # Increase the pointer
 
     def Delete_By_Value(self, value):
-        Temp_Array = [0]*self.Pointer
+        #Temp_Array = [0]*self.Pointer
         original_pointer = self.Pointer  # Track the original number of elements  
-        for i in range(self.Pointer):
-            Temp_Array[i] = self.Array[i]
+        
+        #for i in range(self.Pointer):
+        #    Temp_Array[i] = self.Array[i]
+
         # Loop through to delete all instances of the specified value  
         for i in range(self.Pointer):  
             if self.Array[i] == value:  
@@ -55,17 +57,18 @@ class Custom_list:
             self.Array[i] = self.Array[i + 1] # Shift elements to the left 
         self.Pointer -= 1 # Decrease pointer
         self.Array[self.Pointer] = 0 # Clear the last index for cleaner array
-        counter = 0 
-        for item in self.Array:
-            if item != 0:
-                print(item)
-                self.Array[counter] = item
-                counter += 1
+        
+        #counter = 0 
+        #for item in self.Array:
+        #    if item != 0:
+        #        print(item)
+        #        self.Array[counter] = item
+        #        counter += 1
     
     def Display(self):
-        #for x in range(self.Pointer):  
-        #    print(self.Array[x]) #Print out the array
-        print(self.Array)
+        for x in range(self.Pointer):  
+            print(self.Array[x]) #Print out the array
+        #print(self.Array)
   
     def Append(self,value):
         if self.Pointer >= self.size:  # Check if we need to resize the array
@@ -115,6 +118,13 @@ while True:
         Index = int(input("what index would you like to insert to?"))
         Value = int(input("What value would you like to insert?"))
         obj.Insert(Index, Value)
+    elif I == "Initalize":
+        n = int(input("How long is your Array?"))
+        print("please enter your values: ")
+        for i in range(n):
+            ind = input()
+            obj.Append(ind)
+        print("Your array is now initialized")
     elif I == "Delete by value":
         Value = int(input("What value would you like to delete? "))
         Check = obj.Delete_By_Value(Value)
