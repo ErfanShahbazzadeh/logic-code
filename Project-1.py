@@ -135,3 +135,19 @@ class Custom_list:
             self.Append(item)
 
 obj = Custom_list() # Initialize the Class
+
+# Test Case
+'''
+Test = [1, 2, 3, 4, 5, 0, 2, 3 ,1]
+obj.Initialize(Test)
+obj.Display()
+obj.Reverse()
+obj.Insert(5, 443)
+obj.Display()
+obj.Append(65)
+obj.Delete_By_Index(3)
+obj.Display()
+obj.Delete_By_Value(2)
+obj.Display()
+obj.Search_By_Value(3)
+'''
