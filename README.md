@@ -5,7 +5,7 @@ This is a Python class that extends the built-in `list` type, adding custom meth
 
 ## Features
 
-The `Custom_list` class provides several functions:
+The `Editor` class provides several functions:
 
 1. **Initialize** - You can Initialize a list by using this function like how it's used in the test case.
 2. **Insert** - Inserts an element at a specified index in the list.
