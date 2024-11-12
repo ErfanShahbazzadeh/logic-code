@@ -18,35 +18,41 @@ class Custom_list:
         self.Pointer += 1 # Increase the pointer
 
     def Delete_By_Value(self, value):
-        #Temp_Array = [0]*self.Pointer
+        deleted_count = 0  # Count how many items were deleted  
+        new_index = 0
+        for i in range(self.Pointer):  
+            if self.Array[i] == value:  
+                deleted_count += 1  # Increment the count of deleted items  
+            else:  
+                self.Array[new_index] = self.Array[i]  # Keep non-matching items  
+                new_index += 1
+        self.Pointer = new_index
+
+        if deleted_count > 0:  
+            print(f"Deleted {deleted_count} occurrences of value: {value}")  
+        else:  
+            print("Value not found.") 
+
+        '''
         original_pointer = self.Pointer  # Track the original number of elements  
         
-        #for i in range(self.Pointer):
-        #    Temp_Array[i] = self.Array[i]
-
         # Loop through to delete all instances of the specified value  
         for i in range(self.Pointer):  
             if self.Array[i] == value:  
                 self.Pointer -= 1  # Decrease pointer as an element is deleted  
             else:  
                 # Move the non-matching element to the front  
-                self.Array[i - (original_pointer - self.Pointer)] = self.Array[i]  
+                self.Array[i - (original_pointer - self.Pointer)] = self.Array[i] 
         
         # Clear the remaining elements  
         for i in range(self.Pointer, original_pointer):  
             self.Array[i] = 0  # Optionally set to 0 for cleanliness  
-        
-        #b = 0
-        #for i in range(self.Pointer):
-        #    if Temp_Array[i] != 0:
-        #        self.Array[b] = Temp_Array[i]
-        #        b += 1 
-
 
         if original_pointer - self.Pointer == 0:  
             print("Value not found.")  
         else:  
             print(f"Deleted all occurrences of value: {value}")
+        '''
 
     def Delete_By_Index(self, input):
         
@@ -66,9 +72,13 @@ class Custom_list:
         #        counter += 1
     
     def Display(self):
-        for x in range(self.Pointer):  
-            print(self.Array[x]) #Print out the array
-        #print(self.Array)
+        print("[", end="")
+        for i in range(self.Pointer):
+            if i == self.Pointer - 1:
+                print(self.Array[i], end="")
+            else:
+                print(self.Array[i], end=",") 
+        print("]")
   
     def Append(self,value):
         if self.Pointer >= self.size:  # Check if we need to resize the array
@@ -87,16 +97,27 @@ class Custom_list:
             self.Array[i] = Reversed_Array[i] # Append the new array
                           
     def Search_By_Value(self, value):
-        Index_Array = [0]* self.Pointer # Create a new array
-        i = 0
-        Bool = 0
+        limit = self.size
+        Index_Array = [0]*limit # Initializing a new array for founded index
+        count = 0 # Count the number of found indexes
+        Dis_count = 0 # Size of the displayer array
         for index in range(self.Pointer): # Search thoroug the Array
             if self.Array[index] == value:
-                Index_Array[i] = index
-                i += 1
-                Bool = 1
-        if Bool == 1:
-            return Index_Array
+                if count < limit:
+                    Index_Array[count] = index
+                    count += 1
+        
+        Dis_Array = [0]*count # Initializing the dispalyer array
+
+        # Removing the '0' in the Index_Array
+        for item in Index_Array:
+            if item != 0: 
+                Dis_Array[Dis_count] = item
+                Dis_count += 1 
+
+        # Result of the search
+        if count > 0:
+            print(f"Value {value} found at index: {Dis_Array}")
         else:
             print("There is no such value")
             return None # Return none if it doesn't exist
@@ -109,43 +130,8 @@ class Custom_list:
         self.Array = new_array  # Update reference to new array  
         self.size = new_size  # Update the size 
 
-obj = Custom_list() # Initialize the Class
+    def Initialize(self, List):
+        for item in List:
+            self.Append(item)
 
-# Main loop 
-while True:
-    I = input("What would you like to do?")
-    if I == "Insert":
-        Index = int(input("what index would you like to insert to?"))
-        Value = int(input("What value would you like to insert?"))
-        obj.Insert(Index, Value)
-    elif I == "Initalize":
-        n = int(input("How long is your Array?"))
-        print("please enter your values: ")
-        for i in range(n):
-            ind = input()
-            obj.Append(ind)
-        print("Your array is now initialized")
-    elif I == "Delete by value":
-        Value = int(input("What value would you like to delete? "))
-        Check = obj.Delete_By_Value(Value)
-        if Check == 0:
-            print("There is no such value in the array")
-    elif I == "Delete by index":
-        Index = int(input("What index would you like to delete? "))  
-        obj.Delete_By_Index(Index) 
-    elif I == "Append":
-        Value = int(input("What value would you like to Append?"))
-        obj.Append(Value)
-    elif I == "Reverse":
-       obj.Reverse()
-    elif I == "Search by value":
-        Value = int(input("What value would you like to search for? "))  
-        index = obj.Search_By_Value(Value)  
-        if index is not None:  
-            print(f"Value {Value} found at index: {Index_Array}") 
-    elif I == "Display":
-        obj.Display()
-    elif I == "Exit":
-        break # Exit the loop
-    else:
-        print("Invalid Operation")
+obj = Custom_list() # Initialize the Class
