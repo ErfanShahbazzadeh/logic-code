@@ -1,4 +1,4 @@
-class Custom_list:
+class Editor:
 
     def __init__(self):
         self.Pointer = 0
@@ -134,7 +134,7 @@ class Custom_list:
         for item in List:
             self.Append(item)
 
-obj = Custom_list() # Initialize the Class
+obj = Editor() # Initialize the Class
 
 # Test Case
 '''
