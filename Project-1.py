@@ -33,27 +33,6 @@ class Editor:
         else:  
             print("Value not found.") 
 
-        '''
-        original_pointer = self.Pointer  # Track the original number of elements  
-        
-        # Loop through to delete all instances of the specified value  
-        for i in range(self.Pointer):  
-            if self.Array[i] == value:  
-                self.Pointer -= 1  # Decrease pointer as an element is deleted  
-            else:  
-                # Move the non-matching element to the front  
-                self.Array[i - (original_pointer - self.Pointer)] = self.Array[i] 
-        
-        # Clear the remaining elements  
-        for i in range(self.Pointer, original_pointer):  
-            self.Array[i] = 0  # Optionally set to 0 for cleanliness  
-
-        if original_pointer - self.Pointer == 0:  
-            print("Value not found.")  
-        else:  
-            print(f"Deleted all occurrences of value: {value}")
-        '''
-
     def Delete_By_Index(self, input):
         
         if input <0 or input > self.Pointer: # Check if the input is a valid index
