@@ -1,4 +1,5 @@
-# Project-1-py
+# List-logic-code
+
 A practice project for university
 This is a Python class that extends the built-in `list` type, adding custom methods for inserting, deleting, searching, and displaying list elements with added flexibility.
 
