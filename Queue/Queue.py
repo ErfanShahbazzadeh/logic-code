@@ -18,7 +18,7 @@ class Queuecalss:
             if self.IsFull():
                 print("Queue is full!")
                 return
-            self.Queue[self.cap] = obj  # Add at the end of the filled portion
+            self.Queue[self.cap] = obj
             self.cap += 1
 
 
