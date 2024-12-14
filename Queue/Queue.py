@@ -13,15 +13,6 @@ class Queuecalss:
 
     def IsFull(self): 
         return self.cap == self.size
-
-
-    # def Enqueue(self,object):
-    #     if self.IsFull():
-    #         print("Full")
-    #         return
-    #     self.rear = (self.rear + 1) % (self.size)
-    #     self.Queue[self.rear]  = object
-    #     self.cap += 1 
     
     def Enqueue(self, obj):
             if self.IsFull():
