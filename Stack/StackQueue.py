@@ -2,9 +2,7 @@ class QueueStack:
     def __init__(self, size):
         self.s1 = [None] * size 
         self.s2 = [None] * size  
-        self.front = 0
         self.cap = 0
-        self.rear = size - 1
         self.size = size
         self.top1 = -1  
         self.top2 = -1  
