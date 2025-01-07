@@ -7,14 +7,14 @@ class Linked_list:
     def __init__(self):
         self.head = None
 
-    def insert_at_beginning(self, data):
+    def InsertAtBeginning(self, data):
         new_node = Node(data)
         new_node.next = self.head
         self.head = new_node
 
     def InsertAtIndex(self, data, index):
         if index == 0:
-            self.insert_at_beginning(data)
+            self.InsertAtBeginning(data)
             return
         new_node = Node(data)
         current = self.head
