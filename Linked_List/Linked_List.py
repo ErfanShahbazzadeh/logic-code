@@ -68,7 +68,7 @@ class Linked_list:
             current = current.next
             position += 1
         if not current:
-            print("Index out of bounds")
+            print("Index out of range")
             return None
         prev.next = current.next
         return current.data
