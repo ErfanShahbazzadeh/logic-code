@@ -2,17 +2,17 @@ class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
-        self.prev = None  # Added for two-way linkage
+        self.prev = None  
 
 
 class DoublyLinkedList:
     def __init__(self):
         self.head = None
-        self.tail = None  # Keep track of the last node for efficiency
+        self.tail = None  
 
     def insert_at_beginning(self, data):
         new_node = Node(data)
-        if not self.head:  # If the list is empty
+        if not self.head: 
             self.head = self.tail = new_node
         else:
             new_node.next = self.head
@@ -21,7 +21,7 @@ class DoublyLinkedList:
 
     def insert_at_end(self, data):
         new_node = Node(data)
-        if not self.head:  # If the list is empty
+        if not self.head: 
             self.head = self.tail = new_node
         else:
             self.tail.next = new_node
@@ -41,7 +41,7 @@ class DoublyLinkedList:
                 break
             current = current.next
         if not current:
-            if position == index:  # Insert at the end if index matches
+            if position == index:  
                 self.insert_at_end(data)
             else:
                 print("Index out of range")
@@ -56,9 +56,9 @@ class DoublyLinkedList:
         if not self.head:
             print("List is empty")
             return None
-        if index == 0:  # Remove the first node
+        if index == 0:  
             data = self.head.data
-            if self.head == self.tail:  # If there's only one node
+            if self.head == self.tail:  
                 self.head = self.tail = None
             else:
                 self.head = self.head.next
@@ -73,9 +73,9 @@ class DoublyLinkedList:
             print("Index out of range")
             return None
         data = current.data
-        if current.next:  # If it's not the last node
+        if current.next:  
             current.next.prev = current.prev
-        else:  # If it's the last node
+        else: 
             self.tail = current.prev
         if current.prev:
             current.prev.next = current.next
@@ -95,7 +95,7 @@ class DoublyLinkedList:
         current = self.head
         while current:
             current.prev, current.next = current.next, current.prev
-            current = current.prev  # Move to the previous node (which is now the next)
+            current = current.prev  
         self.head, self.tail = self.tail, self.head
 
     def display(self):
@@ -111,4 +111,3 @@ class DoublyLinkedList:
             print(current.data, end=" <-> ")
             current = current.prev
         print("None")
-
