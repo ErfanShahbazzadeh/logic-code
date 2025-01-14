@@ -41,15 +41,7 @@ class Editor:
         for i in range(input, self.Pointer - 1):
             self.Array[i] = self.Array[i + 1] # Shift elements to the left 
         self.Pointer -= 1 # Decrease pointer
-        self.Array[self.Pointer] = 0 # Clear the last index for cleaner array
-        
-        #counter = 0 
-        #for item in self.Array:
-        #    if item != 0:
-        #        print(item)
-        #        self.Array[counter] = item
-        #        counter += 1
-    
+            
     def Display(self):
         print("[", end="")
         for i in range(self.Pointer):
