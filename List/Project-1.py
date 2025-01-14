@@ -94,7 +94,7 @@ class Editor:
             return None # Return none if it doesn't exist
 
     def resize(self):  
-        new_size = self.size * 1 + 1 if self.size > 0 else 1  # Ensure at least size of 1  
+        new_size = self.size + 1 if self.size > 0 else 1  # Ensure at least size of 1  
         new_array = [0] * new_size  # Create a new array with more size  
         for i in range(self.Pointer):  
             new_array[i] = self.Array[i]  # Copy old elements to new array  
@@ -108,7 +108,7 @@ class Editor:
 obj = Editor() # Initialize the Class
 
 # Test Case
-'''
+
 Test = [1, 2, 3, 4, 5, 0, 2, 3 ,1]
 obj.Initialize(Test)
 obj.Display()
@@ -121,4 +121,3 @@ obj.Display()
 obj.Delete_By_Value(2)
 obj.Display()
 obj.Search_By_Value(3)
-'''
